@@ -1,12 +1,14 @@
 import React from "react";
 
+import "./styles.css";
+
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       item_input: "",
-      items: [],
+      items: ["Pay Phone Bill", "Call Mum"],
     };
 
     this.update = this.update.bind(this);
@@ -21,12 +23,16 @@ class TodoList extends React.Component {
   }
 
   add() {
-    this.setState((prev) => {
-      return {
-        item_input: "",
-        items: prev.items.concat(prev.item_input),
-      };
-    });
+    if (this.state.item_input === "") {
+      alert("Please Add Todo Item :)");
+    } else {
+      this.setState((prev) => {
+        return {
+          item_input: "",
+          items: prev.items.concat(prev.item_input),
+        };
+      });
+    }
   }
 
   remove(key) {
@@ -45,15 +51,17 @@ class TodoList extends React.Component {
   render() {
     return (
       <div className="container">
-        <h4>
-          todo list for {this.props.name} ({this.state.items.length} items)
-        </h4>
+        <h2>
+          Todo List For {this.props.name} ({this.state.items.length} items)
+        </h2>
 
         <div className="todo">
           <input
             type="text"
+            placeholder="Grocereies, pay bill, feed dogs..."
             value={this.state.item_input}
             onChange={this.update}
+            required
           />
           <button className="btn-add" type="button" onClick={this.add}>
             add item
