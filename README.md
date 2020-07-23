@@ -1,4 +1,4 @@
-Demo todo list app [Live Demo](https://github.com/facebook/create-react-app).
+Demo todo list app [Live Demo](https://hazibii.github.io/React-Todo-List-App/).
 
 ## Todo List App
 
